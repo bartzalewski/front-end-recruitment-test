@@ -98,4 +98,72 @@
   btnBacon.addEventListener("click", () => {
     sectionBacon.appendChild(createImg());
   });
+
+  // FORM VALIDATION
+  const form = document.getElementById("form");
+  const firstName = document.getElementById("first-name");
+  const lastName = document.getElementById("last-name");
+  const email = document.getElementById("email");
+  const contry = document.getElementById("contry");
+  const postalCode = document.getElementById("postal-code");
+  const phoneNumber = document.getElementById("phone-number");
+  const creditCard = document.getElementById("credit-card");
+  const securityCode = document.getElementById("sec-code");
+  const expDate = document.getElementById("exp-date");
+  const error = document.getElementById("error");
+  const success = document.getElementById("success");
+
+  form.addEventListener("submit", (e) => {
+    let messages = [];
+
+    firstName.value === "" || firstName.value === null
+      ? messages.push("First name is required")
+      : null;
+    lastName.value === "" || lastName.value === null
+      ? messages.push("Last name is required")
+      : null;
+    email.value === "" || email.value === null
+      ? messages.push("Email is required")
+      : null;
+    postalCode.value === "" || postalCode.value === null
+      ? messages.push("Postal Code is required")
+      : null;
+    phoneNumber.value === "" || phoneNumber.value === null
+      ? messages.push("Phone number is required")
+      : null;
+    creditCard.value === "" || creditCard.value === null
+      ? messages.push("Credit card number is required")
+      : null;
+    securityCode.value === "" || securityCode.value === null
+      ? messages.push("Security card number is required")
+      : null;
+    contry.value === "" || contry.value === null
+      ? messages.push("Contry name is required")
+      : null;
+    expDate.value === "" || expDate.value === null
+      ? messages.push("Expiration date is required")
+      : null;
+
+    if (messages.length > 0) {
+      e.preventDefault();
+      error.innerText = messages.join(", ");
+    } else {
+      e.preventDefault();
+      success.innerText = "Form submitted!";
+    }
+
+    const info = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      contry: contry.value,
+      postalCode: postalCode.value,
+      phoneNumber: phoneNumber.value,
+      creditCard: creditCard.value,
+      securityCode: securityCode.value,
+      expDate: expDate.value,
+    };
+
+    console.log(info);
+  });
 })();
